@@ -58,7 +58,7 @@ def main():
     run = True
 
     # Making Player and giving it attributes
-    p = player(50, 50, 100, 100, (0, 255, 0))
+    p = player(50, 50, 100, 100, (255, 0, 0))
     clock = pygame.time.Clock()
 
     while run:
