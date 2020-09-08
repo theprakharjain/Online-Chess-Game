@@ -2,13 +2,13 @@ import socket
 from _thread import *
 import sys
 
-server = ""
+server = ""  # IP Address needs to be put for local wifi server
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 try:
-    s.bind(server, port)
+    s.bind((server, port))
 except socket.error as e:
     str(e)
 
@@ -17,6 +17,8 @@ print("Waiting for a connection, Server Started")
 
 
 def threaded_client(conn):
+
+    conn.send(str.encode("Connected"))
 
     reply = ""
     while True:
@@ -35,6 +37,9 @@ def threaded_client(conn):
 
         except:
             break
+
+    print("Lost Connection")
+    conn.close()
 
 
 while True:
